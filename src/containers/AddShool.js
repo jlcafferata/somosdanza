@@ -18,7 +18,8 @@ class AddEscuela extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      students: [],
+      escuela: "",
+      obra: "",
       coreografo: "",
       duracion: "",
       estilo: "",
@@ -30,6 +31,7 @@ class AddEscuela extends Component {
       localidad: "",
       provincia: "",
       arancel: "",
+      students: [],
       isAddStudent: false
     };
 
@@ -81,6 +83,8 @@ class AddEscuela extends Component {
   }
   validate() {
     return (
+      this.state.escuela != "" &&
+      this.state.obra != "" &&
       this.state.coreografo != "" &&
       this.state.duracion != "" &&
       this.state.estilo != "" &&

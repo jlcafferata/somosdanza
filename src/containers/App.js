@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 import AddStudent from "./AddStudent";
-import AddEscuela from "./AddEscuela";
+import AddEscuela from "./AddShool";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
