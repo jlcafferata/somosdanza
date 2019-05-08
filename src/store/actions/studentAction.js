@@ -35,6 +35,12 @@ export const addStudent = student => {
   };
 };
 
+export const delStudent = dni => {
+  return dispatch => {
+    dispatch({ type: "REMOVE_STUDENT", dni });
+  };
+};
+
 /*export const addStudent = student => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();

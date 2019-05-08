@@ -25,6 +25,11 @@ const studentReducer = (state = initState, action) => {
       });
     case "ADD_STUDENT_ERROR":
       return state;
+    case "REMOVE_STUDENT":
+      const newState = state.students.filter(
+        dni_alumno => dni_alumno !== action.dni
+      );
+      return newState;
     default:
       return state;
   }
