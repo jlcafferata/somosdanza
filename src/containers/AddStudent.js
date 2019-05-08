@@ -86,7 +86,7 @@ class AddStudent extends Component {
 
   render() {
     return (
-      <div className="container">
+      <React.Fragment>
         <Form
           onSubmit={this.handlerSubmit}
           className="justify-content-md-center">
@@ -143,7 +143,7 @@ class AddStudent extends Component {
         </Form>
 
         <ReactNotification ref={this.notificationAddStudent} />
-      </div>
+      </React.Fragment>
     );
   }
 }

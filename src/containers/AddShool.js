@@ -104,7 +104,7 @@ class AddEscuela extends Component {
     let modalClose = () => this.setState({ isAddStudent: false });
 
     return (
-      <div>
+      <React.Fragment>
         <Container>
           <Row className="justify-content-md-center">
             <Col>
@@ -257,7 +257,7 @@ class AddEscuela extends Component {
             </Col>
           </Row>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }
