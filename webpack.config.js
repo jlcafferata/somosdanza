@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   devServer: {
     publicPath: "/dst/",
-    port: 3001,
+    port: 3005,
     historyApiFallback: true //para que no vaya al http server a buscar la ruta
   },
   module: {
@@ -14,6 +14,10 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       }
     ]
   },

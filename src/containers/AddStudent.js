@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as studentAction from "../store/actions/studentAction";
-import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ReactNotification from "react-notifications-component";
+
+import * as studentAction from "../store/actions/studentAction";
+import PropTypes from "prop-types";
 
 class AddStudent extends Component {
   constructor(props) {
@@ -15,11 +16,30 @@ class AddStudent extends Component {
       apellido_alumno: "",
       nombre_alumno: "",
       nacimiento_alumno: "",
-      dni_alumno: ""
+      dni_alumno: "",
+      showSuccessAddAlumno: false
     };
+
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerSubmit = this.handlerSubmit.bind(this);
     this.handlerNuevo = this.handlerNuevo.bind(this);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationAddStudent = React.createRef();
+    this.validate = this.validate.bind(this);
+  }
+
+  addNotification(props) {
+    this.notificationAddStudent.current.addNotification({
+      title: props.title,
+      message: props.message,
+      type: props.type,
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 3000 },
+      dismissable: { click: true }
+    });
   }
 
   handlerChange(e) {
@@ -30,7 +50,21 @@ class AddStudent extends Component {
 
   handlerSubmit(e) {
     e.preventDefault();
-    this.props.addStudent(this.state);
+    if (this.validate()) {
+      this.props.addStudent(this.state);
+      this.addNotification({
+        title: "Informacion",
+        message: "Alumno agregado exitosamente",
+        type: "success"
+      });
+      this.handlerNuevo(e);
+    } else {
+      this.addNotification({
+        title: "Atencion",
+        message: "Debe ingresar todos los campos",
+        type: "danger"
+      });
+    }
   }
   handlerNuevo(e) {
     e.preventDefault();
@@ -41,20 +75,27 @@ class AddStudent extends Component {
     document.getElementById("apellido_alumno").focus();
   }
 
+  validate() {
+    return (
+      this.state.apellido_alumno != "" &&
+      this.state.nombre_alumno != "" &&
+      this.state.nacimiento_alumno != "" &&
+      this.state.dni_alumno != ""
+    );
+  }
+
   render() {
     return (
       <div className="container">
         <Form
           onSubmit={this.handlerSubmit}
-          className="justify-content-md-center"
-        >
+          className="justify-content-md-center">
           <Form.Row>
             <Form.Group
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="apellido_alumno"
-            >
+              controlId="apellido_alumno">
               <Form.Label>Apellido</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -63,8 +104,7 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="nombre_alumno"
-            >
+              controlId="nombre_alumno">
               <Form.Label>Nombre</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -73,8 +113,7 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="nacimiento_alumno"
-            >
+              controlId="nacimiento_alumno">
               <Form.Label>Fecha de nacimiento</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -83,8 +122,7 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="dni_alumno"
-            >
+              controlId="dni_alumno">
               <Form.Label>DNI</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -97,12 +135,14 @@ class AddStudent extends Component {
               </Button>
             </Col>
             <Col xs={5} md={5}>
-              <Button variant="info" onClick={this.handlerNuevo}>
-                Agregar otro
+              <Button variant="danger" onClick={this.props.onHide}>
+                Cancelar
               </Button>
             </Col>
           </Row>
         </Form>
+
+        <ReactNotification ref={this.notificationAddStudent} />
       </div>
     );
   }
