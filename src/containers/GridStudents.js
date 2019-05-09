@@ -33,8 +33,6 @@ class GridStudents extends Component {
           </thead>
           <tbody>
             {this.props.students.map(function(item, key) {
-              console.log(key);
-              console.log(item);
               return (
                 <tr key={key}>
                   <td>{item.apellido_alumno}</td>

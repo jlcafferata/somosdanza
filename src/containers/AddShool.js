@@ -66,6 +66,7 @@ class AddEscuela extends Component {
   handlerSubmit(e) {
     e.preventDefault();
     this.props.addEscuela(this.state);
+    this.props.addEscuelaFirebase(this.state, this.props.students);
   }
   showAddStudent() {
     if (this.validate()) {
@@ -110,13 +111,15 @@ class AddEscuela extends Component {
             <Col>
               <Form
                 onSubmit={this.handlerSubmit}
-                className="justify-content-md-center">
+                className="justify-content-md-center"
+              >
                 <Form.Row>
                   <Form.Group
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="escuela">
+                    controlId="escuela"
+                  >
                     <Form.Label>Escuela/Compañ&iacute;a</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -124,7 +127,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="2"
                     onChange={this.handlerChange}
-                    controlId="localidad">
+                    controlId="localidad"
+                  >
                     <Form.Label>Localidad</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -132,7 +136,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="2"
                     onChange={this.handlerChange}
-                    controlId="provincia">
+                    controlId="provincia"
+                  >
                     <Form.Label>Provincia</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -140,7 +145,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="obra">
+                    controlId="obra"
+                  >
                     <Form.Label>Nombre de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -148,7 +154,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="2"
                     onChange={this.handlerChange}
-                    controlId="duracion">
+                    controlId="duracion"
+                  >
                     <Form.Label>Duraci&oacute;n de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -159,7 +166,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="estilo">
+                    controlId="estilo"
+                  >
                     <Form.Label>Estilo/Modalidad</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -167,7 +175,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="categoria">
+                    controlId="categoria"
+                  >
                     <Form.Label>Categor&iacute;a/Divisi&oacute;n</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -175,7 +184,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="encuentro">
+                    controlId="encuentro"
+                  >
                     <Form.Label>Encuentro</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -183,7 +193,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="arancel">
+                    controlId="arancel"
+                  >
                     <Form.Label>Arancel grupal</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -193,7 +204,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="coreografo">
+                    controlId="coreografo"
+                  >
                     <Form.Label>Core&oacute;grafo/ Maestro</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -201,7 +213,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="dni">
+                    controlId="dni"
+                  >
                     <Form.Label>DNI</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -209,7 +222,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="email">
+                    controlId="email"
+                  >
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Ingrese email" />
                   </Form.Group>
@@ -217,7 +231,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="telefono">
+                    controlId="telefono"
+                  >
                     <Form.Label>Tel&eacute;fono</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -235,7 +250,7 @@ class AddEscuela extends Component {
                   <Row md={12}>
                     <Col md={5} />
                     <Col md={7}>
-                      <Button variant="success">
+                      <Button variant="success" onClick={this.handlerSubmit}>
                         Finalizar carga de datos
                       </Button>
                     </Col>
@@ -244,7 +259,8 @@ class AddEscuela extends Component {
               </Form>
               <Modal
                 show={this.state.isAddStudent}
-                onHide={this.hideAddStudent}>
+                onHide={this.hideAddStudent}
+              >
                 <Modal.Header closeButton>
                   <Modal.Title>Agregar alumno al certamen</Modal.Title>
                 </Modal.Header>
@@ -264,7 +280,8 @@ class AddEscuela extends Component {
 
 AddEscuela.propTypes = {
   students: PropTypes.array,
-  addEscuela: PropTypes.func
+  addEscuela: PropTypes.func,
+  addEscuelaFirebase: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -275,7 +292,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addEscuela: escuela => dispatch(studentAction.addEscuela(escuela))
+    addEscuela: escuela => dispatch(studentAction.addEscuela(escuela)),
+    addEscuelaFirebase: (escuela, students) =>
+      dispatch(studentAction.addEscuelaFirebase(escuela, students))
   };
 };
 

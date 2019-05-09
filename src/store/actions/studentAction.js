@@ -1,8 +1,11 @@
-export const addEscuela = escuela => {
+export const addEscuelaFirebase = (escuela, students) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const students = { escuela };
-    students.forEach(student => {
+
+    console.dir(students);
+    students.map(function(student, key) {
+      console.log("entro: ");
+      console.dir(student);
       firestore
         .collection("laweek")
         .add({
@@ -25,12 +28,19 @@ export const addEscuela = escuela => {
           dni_alumno: student.dni_alumno
         })
         .then(() => {
-          dispatch({ type: "ADD_ESCUELA", escuela });
+          //dispatch({ type: "ADD_ESCUELA", escuela });
+          console.log("guardado conexito");
         })
         .catch(err => {
           dispatch({ type: "ADD_ESCUELA_ERROR", err });
         });
     });
+  };
+};
+
+export const addEscuela = escuela => {
+  return dispatch => {
+    dispatch({ type: "ADD_ESCUELA", escuela });
   };
 };
 
