@@ -1,7 +1,6 @@
 export const addEscuela = escuela => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const escuela = escuela.escuela;
     const students = { escuela };
     students.forEach(student => {
       firestore
@@ -41,9 +40,9 @@ export const addStudent = student => {
   };
 };
 
-export const delStudent = dni => {
+export const delStudent = id => {
   return dispatch => {
-    dispatch({ type: "REMOVE_STUDENT", dni });
+    dispatch({ type: "REMOVE_STUDENT", id });
   };
 };
 

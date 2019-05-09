@@ -89,13 +89,15 @@ class AddStudent extends Component {
       <React.Fragment>
         <Form
           onSubmit={this.handlerSubmit}
-          className="justify-content-md-center">
+          className="justify-content-md-center"
+        >
           <Form.Row>
             <Form.Group
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="apellido_alumno">
+              controlId="apellido_alumno"
+            >
               <Form.Label>Apellido</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -104,7 +106,8 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="nombre_alumno">
+              controlId="nombre_alumno"
+            >
               <Form.Label>Nombre</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -113,7 +116,8 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="nacimiento_alumno">
+              controlId="nacimiento_alumno"
+            >
               <Form.Label>Fecha de nacimiento</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -122,7 +126,8 @@ class AddStudent extends Component {
               as={Col}
               md="12"
               onChange={this.handlerChange}
-              controlId="dni_alumno">
+              controlId="dni_alumno"
+            >
               <Form.Label>DNI</Form.Label>
               <Form.Control />
             </Form.Group>
@@ -149,7 +154,8 @@ class AddStudent extends Component {
 }
 
 AddStudent.propTypes = {
-  addStudent: PropTypes.func
+  addStudent: PropTypes.func,
+  onHide: PropTypes.func
 };
 const mapStateToProps = state => {
   return state;

@@ -26,9 +26,13 @@ const studentReducer = (state = initState, action) => {
     case "ADD_STUDENT_ERROR":
       return state;
     case "REMOVE_STUDENT":
-      const newState = state.students.filter(
-        dni_alumno => dni_alumno !== action.dni
-      );
+      // don't mutate state here or the tests will fail
+      let newState = [...state];
+      console.log(newState);
+      console.log(newState.students);
+      console.log(action.id);
+
+      newState.students.slice(action.id, 1);
       return newState;
     default:
       return state;

@@ -13,7 +13,7 @@ class GridStudents extends Component {
 
   handleEliminar(e) {
     e.preventDefault();
-    console.log("dni:" + e.target.value);
+    console.log("id:" + e.target.value);
     this.props.handleEliminar(e.target.value);
   }
 
@@ -33,6 +33,8 @@ class GridStudents extends Component {
           </thead>
           <tbody>
             {this.props.students.map(function(item, key) {
+              console.log(key);
+              console.log(item);
               return (
                 <tr key={key}>
                   <td>{item.apellido_alumno}</td>
@@ -43,8 +45,9 @@ class GridStudents extends Component {
                     <Button
                       variant="danger"
                       size="sm"
-                      value={item.dni_alumno}
-                      onClick={self.handleEliminar}>
+                      value={key}
+                      onClick={self.handleEliminar}
+                    >
                       X
                     </Button>
                   </td>
@@ -64,7 +67,7 @@ GridStudents.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleEliminar: dni => dispatch(studentAction.delStudent(dni))
+    handleEliminar: id => dispatch(studentAction.delStudent(id))
   };
 };
 
