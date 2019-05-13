@@ -1,0 +1,232 @@
+Audicion en vivo
+
+Estilos:
+
+{"audicion_vivo": "Teatro"}
+{"audicion_vivo": "Danza Teatro"}
+{"audicion_vivo": "Comedia Musical"}
+{"audicion_vivo": "Showdance"}
+
+Categorias:
+
+{"audicion_vivo": "Infantil A (hasta 9 años)"}
+{"audicion_vivo": "Infantil B (10 a 12 años)"}
+{"audicion_vivo": "Junior (12 a 14 años)"}
+{"audicion_vivo": "Juvenil (15 a 17 años)"}
+{"audicion_vivo": "Adulto: (18 a 34 años)"}
+{"audicion_vivo": "Senior (35 en adelante)"}
+{"audicion_vivo": "Mix: (Mixto de edades)"}
+
+-------
+
+Brasil Kids:
+
+{"brasil_kids": "Danza Jazz - Lyrical Jazz"}
+{"brasil_kids": "Contemporáneo"}
+{"brasil_kids": "Jazz contemporáneo"}
+{"brasil_kids": "Contemporáneo fusión"}
+{"brasil_kids": "Theater Jazz Modern Jazz"}
+{"brasil_kids": "Street dance - Reggaeton"}
+{"brasil_kids": "Hip Hop - Hip Hop Fusion"}
+{"brasil_kids": "Ritmos Urbanos"}
+{"brasil_kids": "Danza Teatro - Show dance"}
+{"brasil_kids": "K-pop"}
+{"brasil_kids": "Ritmos Latinos - Afro"}
+{"brasil_kids": "Bollywood"}
+{"brasil_kids": "Folclore"}
+{"brasil_kids": "Danza Libre"}
+
+
+{"brasil_kids": "Infantil A ( 6 a 8 años)"}
+{"brasil_kids": "Infantil B (9 a 12 años)"}
+{"brasil_kids": "Junior (13 a 15 años)"}
+{"brasil_kids": "Mix: (Mixto de edades)"}
+
+------
+
+Danza libre - Florianopolis
+
+Danza libre - Free dance
+Ritmos latinos
+Axe
+Afro
+Merengue
+Salsa
+Bachata
+Mambo
+Cha cha cha
+Ballroom
+
+Categorias:
+Infantil A (hasta 9 años)
+Infantil B (10 a 12 años)
+Junior (12 a 14 años)
+Juvenil (15 a 17 años)
+Adulto: (18 a 34 años)
+Senior (35 en adelante)
+Mix: (Mixto de edades)
+
+-------
+
+
+Encuentro Baby Infantil
+
+
+Danza Jazz - Lyrical Jazz
+Contemporáneo
+Jazz contemporáneo
+Contemporáneo fusión
+Theater Jazz Modern Jazz
+Street dance - Reggaeton
+Hip Hop - Hip Hop Fusion
+Ritmos Urbanos
+Danza Teatro - Show dance
+K-pop - Latino - Afro - Axe
+Danza clasica - Neoclasico
+Bollywood - Arabe
+Folclore - Español - Tango
+Danza Libre
+
+
+Baby (3 a 5 años)
+Infantil A: (6 a 9 años)
+Infantil B: (10 a 13 años)
+Mix: (Mix de edades)
+
+
+---------
+
+
+Folclore
+
+Pareja Estilizada
+malambo sureño (4 a 8 particip)
+Malambo combinado (4 a 8 particip)
+Malambo femenino (4 a 8 particip)
+Conjunto femenino (a partir de 4 particip)
+Conjunto estilizado (a partir de 8 particip)
+Conjunto tradicional (a partir de 4 particip)
+
+Infantil (hasta 13 años)
+Juvinil (14 a 18 años)
+Mayor (18 a 35 años)
+Adulto (36 en adelante)
+
+---------------
+
+
+
+Juvenil Adulto
+
+Danza Jazz - Lyrical Jazz
+Contemporáneo
+Jazz contemporáneo
+Contemporáneo fusión
+Theater Jazz Modern Jazz
+Street dance - Reggaeton
+Hip Hop - Hip Hop Fusion
+Ritmos Urbanos
+Danza Teatro - Show dance
+K-pop - Latino - Afro - Axe
+Danza clasica - Neoclasico
+Bollywood - Arabe
+Folclore - Español - Tango
+Danza Libre
+
+
+Juvenil (14 a 17 años)
+Adulto (18 en adelante)
+Mix (Mixto de edades)
+
+-------------
+
+
+Los Angeles
+
+Hip hop - Hip hop fusion
+Street dance
+Dance hall
+Locking-popping
+Reggaeton
+Breaking
+New Style
+Ritmos urbanos
+Femme style
+Waacking
+House dance
+Krumping
+Bogue
+Street jazz - Jazz funk
+
+Small Crew (6 a 10 integrantes)
+Mega crew (11 integrantes en adelante)
+
+
+-------------
+
+New York
+
+Danza Jazz 
+Lyrical Jazz
+Contemporáneo
+Jazz contemporáneo
+Theater Jazz 
+Modern Jazz
+Contemporáneo fusión
+Street jazz 
+Danza Teatro
+Danza Libre
+
+Juvenil (13 a 17 años)
+Adulto (18 en adelante)
+Mix (mixto de edades)
+
+---------------
+
+Oriental
+
+Danza arabe
+Flamenco arabe
+Tango arabe
+Reggaeton arabe
+Tribal dance
+Danza india
+Bollywood
+Danzas con elementos
+Oriental
+Percusion
+Tradicional
+Danza con velos
+Fusion
+
+Infantil A (hasta 9 años)
+Infantil B (10 a 12 años)
+Junior (12 a 14 años)
+Juvenil (15 a 17 años)
+Adulto: (18 a 34 años)
+Senior (35 en adelante)
+Mix: (Mixto de edades)
+
+
+-----------------
+
+
+Solistas y duos
+
+Danza Jazz - Lyrical Jazz
+Contemporáneo
+Jazz contemporáneo
+Contemporáneo fusión
+Theater Jazz Modern Jazz
+Street dance - Reggaeton
+Hip Hop - Hip Hop Fusion
+Ritmos Urbanos
+Danza Teatro - Show dance
+K-pop 
+Ritmos Latinos - Afro 
+Bollywood
+Danza Libre
+
+
+Juvenil (13 a 17 años)
+Adulto (Mayor de 18 años)
