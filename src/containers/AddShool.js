@@ -15,6 +15,7 @@ import * as studentAction from "../store/actions/studentAction";
 import AddStudent from "./AddStudent";
 
 import ComboProvincias from "./ComboProvincias";
+import ComboEncuentro from "./ComboEncuentro";
 
 class AddEscuela extends Component {
   constructor(props) {
@@ -61,6 +62,10 @@ class AddEscuela extends Component {
   }
 
   handlerChange(e) {
+    console.log(
+      "HANDLER CHANGE PADRE: " + e.target.id + " -  " + e.target.value
+    );
+    console.dir(e.target);
     this.setState({
       [e.target.id]: e.target.value
     });
@@ -113,29 +118,26 @@ class AddEscuela extends Component {
             <Col>
               <Form
                 onSubmit={this.handlerSubmit}
-                className="justify-content-md-center"
-              >
+                className="justify-content-md-center">
                 <Form.Row>
                   <Form.Group
                     as={Col}
                     md="4"
                     onChange={this.handlerChange}
-                    controlId="escuela"
-                  >
+                    controlId="escuela">
                     <Form.Label>Escuela/Compañ&iacute;a</Form.Label>
                     <Form.Control />
                   </Form.Group>
 
                   <Form.Group as={Col} md="3">
-                    <ComboProvincias />
+                    <ComboProvincias onChange={this.handlerChange} />
                   </Form.Group>
 
                   <Form.Group
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="obra"
-                  >
+                    controlId="obra">
                     <Form.Label>Nombre de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -143,44 +145,22 @@ class AddEscuela extends Component {
                     as={Col}
                     md="2"
                     onChange={this.handlerChange}
-                    controlId="duracion"
-                  >
+                    controlId="duracion">
                     <Form.Label>Duraci&oacute;n de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group
-                    as={Col}
-                    md="3"
-                    onChange={this.handlerChange}
-                    controlId="encuentro"
-                  >
-                    <Form.Label>Encuentro</Form.Label>
-                    <Form.Control as="select">
-                      <option value="audicion_vivo">Audicion en vivo</option>
-                      <option value="brasil_kids">Brasil Kids</option>
-                      <option value="dance_libre_florianopolis">
-                        Danza libre - Florianopolis
-                      </option>
-                      <option value="encuentro_baby_infantil">
-                        Encuentro Baby Infantil
-                      </option>
-                      <option value="folclore">Folclore</option>
-                      <option value="juvenil_adulto">Juvenil Adulto</option>
-                      <option value="los_angeles">Los Angeles</option>
-                      <option value="new_york">New York</option>
-                      <option value="oriental">Oriental</option>
-                      <option value="solistas_duos">Solistas y duos</option>
-                    </Form.Control>
+                  <Form.Group as={Col} md="3">
+                    <ComboEncuentro onChange={this.handlerChange} />
                   </Form.Group>
+
                   <Form.Group
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="estilo"
-                  >
+                    controlId="estilo">
                     <Form.Label>Estilo</Form.Label>
                     <Form.Control as="select">
                       <option value="libre">Libre</option>
@@ -192,8 +172,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="categoria"
-                  >
+                    controlId="categoria">
                     <Form.Label>Categoria</Form.Label>
                     <Form.Control as="select">
                       <option value="jazz">Jazz</option>
@@ -205,8 +184,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="arancel"
-                  >
+                    controlId="arancel">
                     <Form.Label>Arancel grupal $:</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -216,8 +194,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="coreografo"
-                  >
+                    controlId="coreografo">
                     <Form.Label>Core&oacute;grafo/ Maestro</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -225,8 +202,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="dni"
-                  >
+                    controlId="dni">
                     <Form.Label>DNI</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -234,8 +210,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="email"
-                  >
+                    controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Ingrese email" />
                   </Form.Group>
@@ -243,8 +218,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="telefono"
-                  >
+                    controlId="telefono">
                     <Form.Label>Tel&eacute;fono</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -271,8 +245,7 @@ class AddEscuela extends Component {
               </Form>
               <Modal
                 show={this.state.isAddStudent}
-                onHide={this.hideAddStudent}
-              >
+                onHide={this.hideAddStudent}>
                 <Modal.Header closeButton>
                   <Modal.Title>Agregar alumno al certamen</Modal.Title>
                 </Modal.Header>

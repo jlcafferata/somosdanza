@@ -2,15 +2,24 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 class ComboProvincias extends Component {
+  constructor(props) {
+    super(props);
+    this.handlerChange = this.handlerChange.bind(this);
+  }
+
+  handlerChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+    this.props.onChange(e);
+  }
+
   render() {
     return (
       <div>
         <Form.Label>Provincia</Form.Label>
-        <Form.Control
-          as="select"
-          onChange={this.handlerChange}
-          controlId="provincia"
-        >
+        <Form.Control as="select" id="provincia" onChange={this.handlerChange}>
+          <option value="">Seleccione...</option>
           <option value="buenos_aires">Buenos Aires</option>
           <option value="catamarca">Catamarca</option>
           <option value="chaco">Chaco</option>
