@@ -1,11 +1,41 @@
+export const findEscuelaFirebase = (escuela, getFirestore) => {
+  console.log("find: " + escuela.escuela);
+  const firestore = getFirestore();
+  console.log("firestore");
+  var jobskill_query = firestore
+    .collection("laweek")
+    .where("escuela", "==", "a");
+
+  console.log("recupero datos para la escuela");
+
+  jobskill_query.get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      let d = doc._document.proto.fields;
+      console.log(d);
+      console.log(d.encuentro + "-" + escuela.encuentro);
+      console.log(d.estilo + "-" + escuela.estilo);
+      console.log(d.categoria + "-" + escuela.categoria);
+
+      if (
+        d.encuentro === escuela.encuentro &&
+        d.estilo === escuela.estilo &&
+        d.categoria === escuela.categoria
+      ) {
+        doc.ref.delete();
+      }
+    });
+  });
+};
+
 export const addEscuelaFirebase = (escuela, students) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
-    console.dir(students);
+    if (escuela) {
+      console.log("escuela tiene valor");
+      findEscuelaFirebase(escuela, getFirestore);
+    }
     students.map(function(student, key) {
-      console.log("entro: ");
-      console.dir(student);
       firestore
         .collection("laweek")
         .add({

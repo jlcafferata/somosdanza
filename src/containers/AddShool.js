@@ -97,11 +97,19 @@ class AddEscuela extends Component {
     if (this.validate()) {
       this.setState({ isAddStudent: true });
     } else {
-      this.addNotification({
-        title: "Atencion",
-        message: "Debe ingresar todos los campos antes de agregar alumnos",
-        type: "danger"
-      });
+      if (this.state.email != "" && this.state.email.indexOf("@") < 0) {
+        this.addNotification({
+          title: "Atencion",
+          message: "Debe ingresar una direccion de email valida",
+          type: "danger"
+        });
+      } else {
+        this.addNotification({
+          title: "Atencion",
+          message: "Debe ingresar todos los campos antes de agregar alumnos",
+          type: "danger"
+        });
+      }
     }
   }
   hideAddStudent() {
@@ -121,7 +129,8 @@ class AddEscuela extends Component {
       this.state.telefono != "" &&
       this.state.localidad != "" &&
       this.state.provincia != "" &&
-      this.state.arancel != ""
+      this.state.arancel != "" &&
+      this.state.email.indexOf("@") > 0
     );
   }
 
@@ -136,15 +145,13 @@ class AddEscuela extends Component {
             <Col>
               <Form
                 onSubmit={this.handlerSubmit}
-                className="justify-content-md-center"
-              >
+                className="justify-content-md-center">
                 <Form.Row>
                   <Form.Group
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="escuela"
-                  >
+                    controlId="escuela">
                     <Form.Label>Escuela/Compañ&iacute;a</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -157,8 +164,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="localidad"
-                  >
+                    controlId="localidad">
                     <Form.Label>Localidad</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -167,8 +173,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="2"
                     onChange={this.handlerChange}
-                    controlId="obra"
-                  >
+                    controlId="obra">
                     <Form.Label>Nombre de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -176,8 +181,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="1"
                     onChange={this.handlerChange}
-                    controlId="duracion"
-                  >
+                    controlId="duracion">
                     <Form.Label>Duraci&oacute;n</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -209,8 +213,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="arancel"
-                  >
+                    controlId="arancel">
                     <Form.Label>Arancel grupal $:</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -220,8 +223,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="coreografo"
-                  >
+                    controlId="coreografo">
                     <Form.Label>Core&oacute;grafo/ Maestro</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -229,8 +231,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="dni"
-                  >
+                    controlId="dni">
                     <Form.Label>DNI</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -238,8 +239,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="email"
-                  >
+                    controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Ingrese email" />
                   </Form.Group>
@@ -247,8 +247,7 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="telefono"
-                  >
+                    controlId="telefono">
                     <Form.Label>Tel&eacute;fono</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -281,8 +280,7 @@ class AddEscuela extends Component {
               </Form>
               <Modal
                 show={this.state.isAddStudent}
-                onHide={this.hideAddStudent}
-              >
+                onHide={this.hideAddStudent}>
                 <Modal.Header closeButton>
                   <Modal.Title>Agregar alumno al certamen</Modal.Title>
                 </Modal.Header>
