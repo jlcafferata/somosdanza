@@ -55,7 +55,11 @@ export const delStudent = id => {
     dispatch({ type: "REMOVE_STUDENT", id });
   };
 };
-
+export const reset = args => {
+  return dispatch => {
+    dispatch({ type: "RESET", args });
+  };
+};
 /*export const addStudent = student => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();

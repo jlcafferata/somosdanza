@@ -28,7 +28,7 @@ class GridStudents extends Component {
               <th>Nombre</th>
               <th>Nacimiento</th>
               <th>DNI</th>
-              <th>Eliminar</th>
+              <th>Quitar</th>
             </tr>
           </thead>
           <tbody>
@@ -44,7 +44,8 @@ class GridStudents extends Component {
                       variant="danger"
                       size="sm"
                       value={key}
-                      onClick={self.handleEliminar}>
+                      onClick={self.handleEliminar}
+                    >
                       X
                     </Button>
                   </td>

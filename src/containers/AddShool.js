@@ -16,30 +16,34 @@ import AddStudent from "./AddStudent";
 
 import ComboProvincias from "./ComboProvincias";
 import ComboEncuentro from "./ComboEncuentro";
+import ComboEstilo from "./ComboEstilo";
+import ComboCategoria from "./ComboCategoria";
 
 class AddEscuela extends Component {
+  initialState = {
+    escuela: "",
+    obra: "",
+    coreografo: "",
+    duracion: "",
+    estilo: "",
+    categoria: "",
+    encuentro: "",
+    dni: "",
+    email: "",
+    telefono: "",
+    localidad: "",
+    provincia: "",
+    arancel: "",
+    students: [],
+    isAddStudent: false
+  };
   constructor(props) {
     super(props);
-    this.state = {
-      escuela: "",
-      obra: "",
-      coreografo: "",
-      duracion: "",
-      estilo: "",
-      categoria: "",
-      encuentro: "",
-      dni: "",
-      email: "",
-      telefono: "",
-      localidad: "",
-      provincia: "",
-      arancel: "",
-      students: [],
-      isAddStudent: false
-    };
+    this.state = this.initialState;
 
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerSubmit = this.handlerSubmit.bind(this);
+    this.handlerReset = this.handlerReset.bind(this);
     this.showAddStudent = this.showAddStudent.bind(this);
     this.hideAddStudent = this.hideAddStudent.bind(this);
     this.validate = this.validate.bind(this);
@@ -62,10 +66,6 @@ class AddEscuela extends Component {
   }
 
   handlerChange(e) {
-    console.log(
-      "HANDLER CHANGE PADRE: " + e.target.id + " -  " + e.target.value
-    );
-    console.dir(e.target);
     this.setState({
       [e.target.id]: e.target.value
     });
@@ -74,6 +74,24 @@ class AddEscuela extends Component {
     e.preventDefault();
     this.props.addEscuela(this.state);
     this.props.addEscuelaFirebase(this.state, this.props.students);
+  }
+  handlerReset(e) {
+    e.preventDefault();
+    document.getElementById("escuela").value = "";
+    document.getElementById("provincia").value = "";
+    document.getElementById("localidad").value = "";
+    document.getElementById("obra").value = "";
+    document.getElementById("duracion").value = "";
+    document.getElementById("encuentro").value = "";
+    document.getElementById("estilo").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("arancel").value = "";
+    document.getElementById("coreografo").value = "";
+    document.getElementById("dni").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("telefono").value = "";
+
+    this.props.reset();
   }
   showAddStudent() {
     if (this.validate()) {
@@ -118,13 +136,15 @@ class AddEscuela extends Component {
             <Col>
               <Form
                 onSubmit={this.handlerSubmit}
-                className="justify-content-md-center">
+                className="justify-content-md-center"
+              >
                 <Form.Row>
                   <Form.Group
                     as={Col}
-                    md="4"
+                    md="3"
                     onChange={this.handlerChange}
-                    controlId="escuela">
+                    controlId="escuela"
+                  >
                     <Form.Label>Escuela/Compañ&iacute;a</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -137,54 +157,60 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="obra">
+                    controlId="localidad"
+                  >
+                    <Form.Label>Localidad</Form.Label>
+                    <Form.Control />
+                  </Form.Group>
+
+                  <Form.Group
+                    as={Col}
+                    md="2"
+                    onChange={this.handlerChange}
+                    controlId="obra"
+                  >
                     <Form.Label>Nombre de la obra</Form.Label>
                     <Form.Control />
                   </Form.Group>
                   <Form.Group
                     as={Col}
-                    md="2"
+                    md="1"
                     onChange={this.handlerChange}
-                    controlId="duracion">
-                    <Form.Label>Duraci&oacute;n de la obra</Form.Label>
+                    controlId="duracion"
+                  >
+                    <Form.Label>Duraci&oacute;n</Form.Label>
                     <Form.Control />
                   </Form.Group>
                 </Form.Row>
 
                 <Form.Row>
                   <Form.Group as={Col} md="3">
-                    <ComboEncuentro onChange={this.handlerChange} />
+                    <ComboEncuentro
+                      onChange={this.handlerChange}
+                      encuentro={this.state.encuentro}
+                    />
+                  </Form.Group>
+
+                  <Form.Group as={Col} md="3">
+                    <ComboEstilo
+                      onChange={this.handlerChange}
+                      encuentro={this.state.encuentro}
+                    />
+                  </Form.Group>
+
+                  <Form.Group as={Col} md="3">
+                    <ComboCategoria
+                      onChange={this.handlerChange}
+                      encuentro={this.state.encuentro}
+                    />
                   </Form.Group>
 
                   <Form.Group
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="estilo">
-                    <Form.Label>Estilo</Form.Label>
-                    <Form.Control as="select">
-                      <option value="libre">Libre</option>
-                      <option value="colaborativo">Colaborativo</option>
-                    </Form.Control>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    md="3"
-                    onChange={this.handlerChange}
-                    controlId="categoria">
-                    <Form.Label>Categoria</Form.Label>
-                    <Form.Control as="select">
-                      <option value="jazz">Jazz</option>
-                      <option value="brasilero">Brasilero</option>
-                    </Form.Control>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    md="3"
-                    onChange={this.handlerChange}
-                    controlId="arancel">
+                    controlId="arancel"
+                  >
                     <Form.Label>Arancel grupal $:</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -194,7 +220,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="coreografo">
+                    controlId="coreografo"
+                  >
                     <Form.Label>Core&oacute;grafo/ Maestro</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -202,7 +229,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="dni">
+                    controlId="dni"
+                  >
                     <Form.Label>DNI</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -210,7 +238,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="email">
+                    controlId="email"
+                  >
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Ingrese email" />
                   </Form.Group>
@@ -218,7 +247,8 @@ class AddEscuela extends Component {
                     as={Col}
                     md="3"
                     onChange={this.handlerChange}
-                    controlId="telefono">
+                    controlId="telefono"
+                  >
                     <Form.Label>Tel&eacute;fono</Form.Label>
                     <Form.Control />
                   </Form.Group>
@@ -229,15 +259,21 @@ class AddEscuela extends Component {
                     </Button>
                   </Col>
                 </Form.Row>
+                <br />
                 {students && students.length > 0 && (
                   <GridStudents students={students} />
                 )}
                 {students && students.length > 0 && (
                   <Row md={12}>
-                    <Col md={5} />
-                    <Col md={7}>
+                    <Col md={4} />
+                    <Col md={3}>
                       <Button variant="success" onClick={this.handlerSubmit}>
                         Finalizar carga de datos
+                      </Button>
+                    </Col>
+                    <Col md={2}>
+                      <Button variant="danger" onClick={this.handlerReset}>
+                        Cancelar
                       </Button>
                     </Col>
                   </Row>
@@ -245,7 +281,8 @@ class AddEscuela extends Component {
               </Form>
               <Modal
                 show={this.state.isAddStudent}
-                onHide={this.hideAddStudent}>
+                onHide={this.hideAddStudent}
+              >
                 <Modal.Header closeButton>
                   <Modal.Title>Agregar alumno al certamen</Modal.Title>
                 </Modal.Header>
@@ -279,7 +316,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addEscuela: escuela => dispatch(studentAction.addEscuela(escuela)),
     addEscuelaFirebase: (escuela, students) =>
-      dispatch(studentAction.addEscuelaFirebase(escuela, students))
+      dispatch(studentAction.addEscuelaFirebase(escuela, students)),
+
+    reset: () => dispatch(studentAction.reset())
   };
 };
 

@@ -46,6 +46,8 @@ const studentReducer = (state = initState, action) => {
           ...state.students.slice(action.id + 1)
         ]
       });
+    case "RESET":
+      return Object.assign({}, ...state, { initState });
     default:
       return state;
   }

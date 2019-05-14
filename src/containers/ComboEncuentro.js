@@ -25,9 +25,7 @@ class ComboEncuentro extends Component {
           <option value="danza_libre_florianopolis">
             Danza libre - Florianopolis
           </option>
-          <option value="encuentro_baby_infantil">
-            Encuentro Baby Infantil
-          </option>
+          <option value="baby_infantil">Baby Infantil</option>
           <option value="folclore">Folclore</option>
           <option value="juvenil_adulto">Juvenil Adulto</option>
           <option value="los_angeles">Los Angeles</option>
@@ -40,6 +38,8 @@ class ComboEncuentro extends Component {
   }
 }
 
-ComboEncuentro.propTypes = {};
+ComboEncuentro.propTypes = {
+  onChange: PropTypes.func
+};
 
 export default ComboEncuentro;

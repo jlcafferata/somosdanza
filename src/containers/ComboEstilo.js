@@ -1,174 +1,264 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
+import ItemCombo from "../components/ItemCombo";
 class ComboEstilo extends Component {
   state = {
     encuentro: ""
   };
   estilos = [
     {
-      audicion_vivo: [
-        { teatro: "Teatro" },
-        { danza_teatro: "Danza Teatro" },
-        { comedia_musical: "Comedia Musical" },
-        { showdance: "Showdance" }
+      encuentro: "audicion_vivo",
+      estilos: [
+        { codigo: "teatro", descripcion: "Teatro" },
+        { codigo: "danza_teatro", descripcion: "Danza Teatro" },
+        { codigo: "comedia_musical", descripcion: "Comedia Musical" },
+        { codigo: "showdance", descripcion: "Showdance" }
       ]
     },
     {
-      brasil_kids: [
-        { danza_jazz_lyrical_jazz: "Danza Jazz - Lyrical Jazz" },
-        { contemporaneo: "Contemporaneo" },
-        { jazz_contemporaneo: "Jazz contemporaneo" },
-        { contemporaneo_fusion: "Contemporaneo fusion" },
-        { theater_jazz_modern_jazz: "Theater Jazz Modern Jazz" },
-        { street_dance_reggaeton: "Street dance - Reggaeton" },
-        { hip_hop_fusion: "Hip Hop - Hip Hop Fusion" },
-        { ritmos_urbanos: "Ritmos Urbanos" },
-        { danza_teatro_show_dance: "Danza Teatro - Show dance" },
-        { k_pop: "K-pop" },
-        { ritmos_latinos_afro: "Ritmos Latinos - Afro" },
-        { bollywood: "Bollywood" },
-        { folclore: "Folclore" },
-        { danza_libre: "Danza Libre" }
-      ]
-    },
-    {
-      danza_libre_florianopolis: [
-        { danza_libre_free_dance: "Danza libre - Free dance" },
-        { ritmos_latinos: "Ritmos latinos" },
-        { axe: "Axe" },
-        { afro: "Afro" },
-        { merengue: "Merengue" },
-        { salsa: "Salsa" },
-        { bachata: "Bachata" },
-        { mambo: "Mambo" },
-        { cha_cha_cha: "Cha cha cha" },
-        { ballroom: "Ballroom" }
-      ]
-    },
-    {
-      baby_infantil: [
-        { danza_jazz_lyrical_jazz: "Danza Jazz - Lyrical Jazz" },
-        { contemporaneo: "Contemporaneo" },
-        { jazz_contemporaneo: "Jazz contemporaneo" },
-        { contemporaneo_fusion: "Contemporaneo fusion" },
-        { theater_jazz_modern_jazz: "Theater Jazz Modern Jazz" },
-        { street_dance_reggaeton: "Street dance - Reggaeton" },
-        { hip_hop_fusion: "Hip Hop - Hip Hop Fusion" },
-        { ritmos_urbanos: "Ritmos Urbanos" },
-        { danza_teatro_show_dance: "Danza Teatro - Show dance" },
-        { k_pop_latino_afro_axe: "K-pop - Latino - Afro - Axe" },
-        { danza_clasica_neoclasico: "Danza clasica - Neoclasico" },
-        { bollywood_arabe: "Bollywood - Arabe" },
-        { folclore_espanol: "Folclore - Espanol" },
-        { danza_libre: "Danza Libre" }
-      ]
-    },
-    {
-      folclore: [
-        { pareja_estilizada: "Pareja Estilizada" },
-        { malambo_sureno: "Malambo sureno (4 a 8 particip)" },
-        { malambo_combinado: "Malambo combinado (4 a 8 particip)" },
-        { malambo_femenino: "Malambo femenino (4 a 8 particip)" },
-        { conjunto_femenino: "Conjunto femenino (a partir de 4 particip)" },
-        { conjunto_estilizado: "Conjunto estilizado (a partir de 8 particip)" },
+      encuentro: "brasil_kids",
+      estilos: [
         {
-          conjunto_tradicional: "Conjunto tradicional (a partir de 4 particip)"
+          codigo: "danza_jazz_lyrical_jazz",
+          descripcion: "Danza Jazz - Lyrical Jazz"
+        },
+        { codigo: "contemporaneo", descripcion: "Contemporaneo" },
+        { codigo: "jazz_contemporaneo", descripcion: "Jazz contemporaneo" },
+        { codigo: "contemporaneo_fusion", descripcion: "Contemporaneo fusion" },
+        {
+          codigo: "theater_jazz_modern_jazz",
+          descripcion: "Theater Jazz Modern Jazz"
+        },
+        {
+          codigo: "street_dance_reggaeton",
+          descripcion: "Street dance - Reggaeton"
+        },
+        { codigo: "hip_hop_fusion", descripcion: "Hip Hop - Hip Hop Fusion" },
+        { codigo: "ritmos_urbanos", descripcion: "Ritmos Urbanos" },
+        {
+          codigo: "danza_teatro_show_dance",
+          descripcion: "Danza Teatro - Show dance"
+        },
+        { codigo: "k_pop", descripcion: "K-pop" },
+        { codigo: "ritmos_latinos_afro", descripcion: "Ritmos Latinos - Afro" },
+        { codigo: "bollywood", descripcion: "Bollywood" },
+        { codigo: "folclore", descripcion: "Folclore" },
+        { codigo: "danza_libre", descripcion: "Danza Libre" }
+      ]
+    },
+    {
+      encuentro: "danza_libre_florianopolis",
+      estilos: [
+        {
+          codigo: "danza_libre_free_dance",
+          descripcion: "Danza libre - Free dance"
+        },
+        { codigo: "ritmos_latinos", descripcion: "Ritmos latinos" },
+        { codigo: "axe", descripcion: "Axe" },
+        { codigo: "afro", descripcion: "Afro" },
+        { codigo: "merengue", descripcion: "Merengue" },
+        { codigo: "salsa", descripcion: "Salsa" },
+        { codigo: "bachata", descripcion: "Bachata" },
+        { codigo: "mambo", descripcion: "Mambo" },
+        { codigo: "cha_cha_cha", descripcion: "Cha cha cha" },
+        { codigo: "ballroom", descripcion: "Ballroom" }
+      ]
+    },
+    {
+      encuentro: "baby_infantil",
+      estilos: [
+        {
+          codigo: "danza_jazz_lyrical_jazz",
+          descripcion: "Danza Jazz - Lyrical Jazz"
+        },
+        { codigo: "contemporaneo", descripcion: "Contemporaneo" },
+        { codigo: "jazz_contemporaneo", descripcion: "Jazz contemporaneo" },
+        { codigo: "contemporaneo_fusion", descripcion: "Contemporaneo fusion" },
+        {
+          codigo: "theater_jazz_modern_jazz",
+          descripcion: "Theater Jazz Modern Jazz"
+        },
+        {
+          codigo: "street_dance_reggaeton",
+          descripcion: "Street dance - Reggaeton"
+        },
+        { codigo: "hip_hop_fusion", descripcion: "Hip Hop - Hip Hop Fusion" },
+        { codigo: "ritmos_urbanos", descripcion: "Ritmos Urbanos" },
+        {
+          codigo: "danza_teatro_show_dance",
+          descripcion: "Danza Teatro - Show dance"
+        },
+        {
+          codigo: "k_pop_latino_afro_axe",
+          descripcion: "K-pop - Latino - Afro - Axe"
+        },
+        {
+          codigo: "danza_clasica_neoclasico",
+          descripcion: "Danza clasica - Neoclasico"
+        },
+        { codigo: "bollywood_arabe", descripcion: "Bollywood - Arabe" },
+        { codigo: "folclore_espanol", descripcion: "Folclore - Espanol" },
+        { codigo: "danza_libre", descripcion: "Danza Libre" }
+      ]
+    },
+    {
+      encuentro: "folclore",
+      estilos: [
+        { codigo: "pareja_estilizada", descripcion: "Pareja Estilizada" },
+        {
+          codigo: "malambo_sureno",
+          descripcion: "Malambo sureno (4 a 8 particip)"
+        },
+        {
+          codigo: "malambo_combinado",
+          descripcion: "Malambo combinado (4 a 8 particip)"
+        },
+        {
+          codigo: "malambo_femenino",
+          descripcion: "Malambo femenino (4 a 8 particip)"
+        },
+        {
+          codigo: "conjunto_femenino",
+          descripcion: "Conjunto femenino (a partir de 4 particip)"
+        },
+        {
+          codigo: "conjunto_estilizado",
+          descripcion: "Conjunto estilizado (a partir de 8 particip)"
+        },
+        {
+          codigo: "conjunto_tradicional",
+          descripcion: "Conjunto tradicional (a partir de 4 particip)"
         }
       ]
     },
     {
-      juvenil_adulto: [
-        { danza_jazz_lyrical_jazz: "Danza Jazz - Lyrical Jazz" },
-        { contemporaneo: "Contemporaneo" },
-        { jazz_contemporaneo: "Jazz contemporaneo" },
-        { contemporaneo_fusion: "Contemporaneo fusion" },
-        { theater_jazz_modern_jazz: "Theater Jazz Modern Jazz" },
-        { street_dance_reggaeton: "Street dance - Reggaeton" },
-        { hip_hop_fusion: "Hip Hop - Hip Hop Fusion" },
-        { ritmos_urbanos: "Ritmos Urbanos" },
-        { danza_teatro_show_dance: "Danza Teatro - Show dance" },
-        { k_pop_latino_afro_axe: "K-pop - Latino - Afro - Axe" },
-        { danza_clasica_neoclasico: "Danza clasica - Neoclasico" },
-        { bollywood_arabe: "Bollywood - Arabe" },
-        { folclore_espanol: "Folclore - Espanol" },
-        { danza_libre: "Danza Libre" }
+      encuentro: "juvenil_adulto",
+      estilos: [
+        {
+          codigo: "danza_jazz_lyrical_jazz",
+          descripcion: "Danza Jazz - Lyrical Jazz"
+        },
+        { codigo: "contemporaneo", descripcion: "Contemporaneo" },
+        { codigo: "jazz_contemporaneo", descripcion: "Jazz contemporaneo" },
+        { codigo: "contemporaneo_fusion", descripcion: "Contemporaneo fusion" },
+        {
+          codigo: "theater_jazz_modern_jazz",
+          descripcion: "Theater Jazz Modern Jazz"
+        },
+        {
+          codigo: "street_dance_reggaeton",
+          descripcion: "Street dance - Reggaeton"
+        },
+        { codigo: "hip_hop_fusion", descripcion: "Hip Hop - Hip Hop Fusion" },
+        { codigo: "ritmos_urbanos", descripcion: "Ritmos Urbanos" },
+        {
+          codigo: "danza_teatro_show_dance",
+          descripcion: "Danza Teatro - Show dance"
+        },
+        {
+          codigo: "k_pop_latino_afro_axe",
+          descripcion: "K-pop - Latino - Afro - Axe"
+        },
+        {
+          codigo: "danza_clasica_neoclasico",
+          descripcion: "Danza clasica - Neoclasico"
+        },
+        { codigo: "bollywood_arabe", descripcion: "Bollywood - Arabe" },
+        { codigo: "folclore_espanol", descripcion: "Folclore - Espanol" },
+        { codigo: "danza_libre", descripcion: "Danza Libre" }
       ]
     },
     {
-      los_angeles: [
-        { hip_hop_fusion: "Hip hop - Hip hop fusion" },
-        { street_dance: "Street dance" },
-        { dance_hall: "Dance hall" },
-        { locking_popping: "Locking-popping" },
-        { reggaeton: "Reggaeton" },
-        { breaking: "Breaking" },
-        { new_style: "New Style" },
-        { ritmos_urbano: "Ritmos urbanos" },
-        { femme_style: "Femme style" },
-        { waacking: "Waacking" },
-        { house_dance: "House dance" },
-        { krumping: "Krumping" },
-        { bogue: "Bogue" },
-        { street_jazz_funk: "Street jazz - Jazz funk" }
+      encuentro: "los_angeles",
+      estilos: [
+        { codigo: "hip_hop_fusion", descripcion: "Hip hop - Hip hop fusion" },
+        { codigo: "street_dance", descripcion: "Street dance" },
+        { codigo: "dance_hall", descripcion: "Dance hall" },
+        { codigo: "locking_popping", descripcion: "Locking-popping" },
+        { codigo: "reggaeton", descripcion: "Reggaeton" },
+        { codigo: "breaking", descripcion: "Breaking" },
+        { codigo: "new_style", descripcion: "New Style" },
+        { codigo: "ritmos_urbano", descripcion: "Ritmos urbanos" },
+        { codigo: "femme_style", descripcion: "Femme style" },
+        { codigo: "waacking", descripcion: "Waacking" },
+        { codigo: "house_dance", descripcion: "House dance" },
+        { codigo: "krumping", descripcion: "Krumping" },
+        { codigo: "bogue", descripcion: "Bogue" },
+        { codigo: "street_jazz_funk", descripcion: "Street jazz - Jazz funk" }
       ]
     },
     {
-      new_york: [
-        { danza_jazz: "Danza Jazz " },
-        { lyrical_jazz: "Lyrical Jazz" },
-        { contemporaneo: "Contemporaneo" },
-        { jazz_contemporaneo: "Jazz contemporaneo" },
+      encuentro: "new_york",
+      estilos: [
+        { codigo: "danza_jazz", descripcion: "Danza Jazz " },
+        { codigo: "lyrical_jazz", descripcion: "Lyrical Jazz" },
+        { codigo: "contemporaneo", descripcion: "Contemporaneo" },
+        { codigo: "jazz_contemporaneo", descripcion: "Jazz contemporaneo" },
 
-        { theater_jazz: "Theater Jazz " },
-        { modern_jazz: "Modern Jazz" },
-        { contemporaneo_fusion: "Contemporaneo fusion" },
-        { street_jazz: "Street jazz" },
-        { hip_hop_fusion: "Hip Hop - Hip Hop Fusion" },
-        { danza_teatro: "Danza Teatro" },
-        { danza_libre: "Danza Libre" }
+        { codigo: "theater_jazz", descripcion: "Theater Jazz " },
+        { codigo: "modern_jazz", descripcion: "Modern Jazz" },
+        { codigo: "contemporaneo_fusion", descripcion: "Contemporaneo fusion" },
+        { codigo: "street_jazz", descripcion: "Street jazz" },
+        { codigo: "hip_hop_fusion", descripcion: "Hip Hop - Hip Hop Fusion" },
+        { codigo: "danza_teatro", descripcion: "Danza Teatro" },
+        { codigo: "danza_libre", descripcion: "Danza Libre" }
       ]
     },
     {
-      oriental: [
-        { danza_arabe: "Danza arabe" },
-        { flamenco_arabe: "Flamenco arabe" },
-        { tango_arabe: "Tango arabe" },
-        { reggeaton_arabe: "Reggaeton arabe" },
-        { tribal_dance: "Tribal dance" },
-        { danza_india: "Danza india" },
-        { bollywood: "Bollywood" },
-        { danza_con_elementos: "Danzas con elementos" },
-        { Oriental: "oriental" },
-        { percusion: "Percusion" },
-        { tradicional: "Tradicional" },
-        { danza_con_velos: "Danza con velos" },
-        { fusion: "Fusion" }
+      encuentro: "oriental",
+      estilos: [
+        { codigo: "danza_arabe", descripcion: "Danza arabe" },
+        { codigo: "flamenco_arabe", descripcion: "Flamenco arabe" },
+        { codigo: "tango_arabe", descripcion: "Tango arabe" },
+        { codigo: "reggeaton_arabe", descripcion: "Reggaeton arabe" },
+        { codigo: "tribal_dance", descripcion: "Tribal dance" },
+        { codigo: "danza_india", descripcion: "Danza india" },
+        { codigo: "bollywood", descripcion: "Bollywood" },
+        { codigo: "danza_con_elementos", descripcion: "Danzas con elementos" },
+        { codigo: "Oriental", descripcion: "oriental" },
+        { codigo: "percusion", descripcion: "Percusion" },
+        { codigo: "tradicional", descripcion: "Tradicional" },
+        { codigo: "danza_con_velos", descripcion: "Danza con velos" },
+        { codigo: "fusion", descripcion: "Fusion" }
       ]
     },
     {
-      solistas_duos: [
-        { danza_jazz_lyrical_jazz: "Danza Jazz - Lyrical Jazz" },
-        { contemporaneo: "Contemporaneo" },
-        { jazz_contemporaneo: "Jazz contemporaneo" },
-        { contemporaneo_fusion: "Contemporaneo fusion" },
-        { theater_jazz_modern_jazz: "Theater Jazz Modern Jazz" },
-        { street_dance_reggaeton: "Street dance - Reggaeton" },
-        { hip_hop_fusion: "Hip Hop - Hip Hop Fusion" },
-        { ritmos_urbanos: "Ritmos Urbanos" },
-        { danza_teatro_show_dance: "Danza Teatro - Show dance" },
-        { k_pop: "K-pop" },
-        { ritmos_latinos: "Ritmos latinos" },
-        { bollywood: "Bollywood" },
-        { danza_libre: "Danza Libre" }
+      encuentro: "solistas_duos",
+      estilos: [
+        {
+          codigo: "danza_jazz_lyrical_jazz",
+          descripcion: "Danza Jazz - Lyrical Jazz"
+        },
+        { codigo: "contemporaneo", descripcion: "Contemporaneo" },
+        { codigo: "jazz_contemporaneo", descripcion: "Jazz contemporaneo" },
+        { codigo: "contemporaneo_fusion", descripcion: "Contemporaneo fusion" },
+        {
+          codigo: "theater_jazz_modern_jazz",
+          descripcion: "Theater Jazz Modern Jazz"
+        },
+        {
+          codigo: "street_dance_reggaeton",
+          descripcion: "Street dance - Reggaeton"
+        },
+        { codigo: "hip_hop_fusion", descripcion: "Hip Hop - Hip Hop Fusion" },
+        { codigo: "ritmos_urbanos", descripcion: "Ritmos Urbanos" },
+        {
+          codigo: "danza_teatro_show_dance",
+          descripcion: "Danza Teatro - Show dance"
+        },
+        { codigo: "k_pop", descripcion: "K-pop" },
+        { codigo: "ritmos_latinos", descripcion: "Ritmos latinos" },
+        { codigo: "bollywood", descripcion: "Bollywood" },
+        { codigo: "danza_libre", descripcion: "Danza Libre" }
       ]
     }
   ];
 
-  constructor({ encuentro }) {
+  constructor(props) {
     super(props);
     this.setState({
-      encuentro: encuentro
+      encuentro: props.encuentro
     });
     this.handlerChange = this.handlerChange.bind(this);
   }
@@ -180,18 +270,40 @@ class ComboEstilo extends Component {
     this.props.onChange(e);
   }
 
+  componentWillReceiveProps(options) {
+    this.setState({
+      encuentro: options.encuentro
+    });
+  }
+
   render() {
+    let detalle_encuentro = [];
+    let self = this;
+    this.estilos.forEach(function(valor, indice, array) {
+      if (valor.encuentro === self.state.encuentro) {
+        detalle_encuentro = valor.estilos;
+        return;
+      }
+    });
     return (
       <div>
         <Form.Label>Estilo</Form.Label>
         <Form.Control as="select" id="estilo" onChange={this.handlerChange}>
-          <option value="">Seleccione...</option>
+          <option key="" value="">
+            Seleccione...
+          </option>
+          {detalle_encuentro.map(valor => (
+            <ItemCombo key={valor.codigo} item={valor} />
+          ))}
         </Form.Control>
       </div>
     );
   }
 }
 
-ComboEstilo.propTypes = {};
+ComboEstilo.propTypes = {
+  onChange: PropTypes.func,
+  encuentro: PropTypes.string
+};
 
 export default ComboEstilo;
