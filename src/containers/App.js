@@ -18,7 +18,9 @@ class App extends Component {
           </Col>
           <Col>
             <img src="assets/la_week.png" />
-            <h5>Dance Competition Contest</h5>
+            <h7 className="justify-content-md-center row">
+              Dance Competition Contest
+            </h7>
           </Col>
         </Row>
         <Row>
