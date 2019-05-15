@@ -73,7 +73,13 @@ class AddEscuela extends Component {
   handlerSubmit(e) {
     e.preventDefault();
     this.props.addEscuela(this.state);
-    this.props.addEscuelaFirebase(this.state, this.props.students);
+    this.props.addEscuelaFirebase(this.state, this.props.students).then(() => {
+      this.addNotification({
+        title: "Informacion",
+        message: "Inscripcion exitosa",
+        type: "success"
+      });
+    });
   }
   handlerReset(e) {
     e.preventDefault();
@@ -315,7 +321,6 @@ const mapDispatchToProps = dispatch => {
     addEscuela: escuela => dispatch(studentAction.addEscuela(escuela)),
     addEscuelaFirebase: (escuela, students) =>
       dispatch(studentAction.addEscuelaFirebase(escuela, students)),
-
     reset: () => dispatch(studentAction.reset())
   };
 };

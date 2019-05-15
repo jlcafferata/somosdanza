@@ -1,29 +1,19 @@
-export const findEscuelaFirebase = (escuela, getFirestore) => {
-  console.log("find: " + escuela.escuela);
+export const findEscuelaFirebase = (escuela, students, getFirestore) => {
   const firestore = getFirestore();
-  console.log("firestore");
+
   var jobskill_query = firestore
     .collection("laweek")
-    .where("escuela", "==", "a");
-
-  console.log("recupero datos para la escuela");
+    .where("escuela", "==", escuela.escuela)
+    .where("encuentro", "==", escuela.encuentro)
+    .where("estilo", "==", escuela.estilo)
+    .where("categoria", "==", escuela.categoria);
 
   jobskill_query.get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-      let d = doc._document.proto.fields;
-      console.log(d);
-      console.log(d.encuentro + "-" + escuela.encuentro);
-      console.log(d.estilo + "-" + escuela.estilo);
-      console.log(d.categoria + "-" + escuela.categoria);
-
-      if (
-        d.encuentro === escuela.encuentro &&
-        d.estilo === escuela.estilo &&
-        d.categoria === escuela.categoria
-      ) {
-        doc.ref.delete();
-      }
+      doc.ref.delete();
     });
+
+    continuarAddingEscuelaFirebase(escuela, students, getFirestore);
   });
 };
 
@@ -31,41 +21,53 @@ export const addEscuelaFirebase = (escuela, students) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
-    if (escuela) {
-      console.log("escuela tiene valor");
-      findEscuelaFirebase(escuela, getFirestore);
-    }
-    students.map(function(student, key) {
-      firestore
-        .collection("laweek")
-        .add({
-          escuela: escuela.escuela,
-          obra: escuela.obra,
-          coreografo: escuela.coreografo,
-          duracion: escuela.duracion,
-          estilo: escuela.estilo,
-          categoria: escuela.categoria,
-          encuentro: escuela.encuentro,
-          dni: escuela.dni,
-          email: escuela.email,
-          telefono: escuela.telefono,
-          localidad: escuela.localidad,
-          provincia: escuela.provincia,
-          arancel: escuela.arancel,
-          apellido_alumno: student.apellido_alumno,
-          nombre_alumno: student.nombre_alumno,
-          nacimiento_alumno: student.nacimiento_alumno,
-          dni_alumno: student.dni_alumno
-        })
-        .then(() => {
-          //dispatch({ type: "ADD_ESCUELA", escuela });
-          console.log("guardado conexito");
-        })
-        .catch(err => {
-          dispatch({ type: "ADD_ESCUELA_ERROR", err });
-        });
+    return new Promise((resolve, reject) => {
+      if (escuela) {
+        findEscuelaFirebase(escuela, students, getFirestore);
+      }
+
+      resolve();
     });
   };
+};
+
+export const continuarAddingEscuelaFirebase = (
+  escuela,
+  students,
+  getFirestore
+) => {
+  const firestore = getFirestore();
+
+  students.map(function(student, key) {
+    firestore
+      .collection("laweek")
+      .add({
+        escuela: escuela.escuela,
+        obra: escuela.obra,
+        coreografo: escuela.coreografo,
+        duracion: escuela.duracion,
+        estilo: escuela.estilo,
+        categoria: escuela.categoria,
+        encuentro: escuela.encuentro,
+        dni: escuela.dni,
+        email: escuela.email,
+        telefono: escuela.telefono,
+        localidad: escuela.localidad,
+        provincia: escuela.provincia,
+        arancel: escuela.arancel,
+        apellido_alumno: student.apellido_alumno,
+        nombre_alumno: student.nombre_alumno,
+        nacimiento_alumno: student.nacimiento_alumno,
+        dni_alumno: student.dni_alumno
+      })
+      .then(() => {
+        //dispatch({ type: "ADD_ESCUELA", escuela });
+        console.log("guardado conexito");
+      })
+      .catch(err => {
+        dispatch({ type: "ADD_ESCUELA_ERROR", err });
+      });
+  });
 };
 
 export const addEscuela = escuela => {
