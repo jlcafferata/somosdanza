@@ -20,51 +20,56 @@ class ListInscriptions extends Component {
 
     return (
       <React.Fragment>
-        <Container>
-          <h3>Listado de Inscriptos</h3>
-          <Row className="justify-content-md-center">
-            <Col>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Escuela</th>
-                    <th>Provincia</th>
-                    <th>Localidad</th>
-                    <th>Obra</th>
-                    <th>Encuentro</th>
-                    <th>Categoria</th>
-                    <th>Estilo</th>
-                    <th>Coreografo</th>
-                    <th>Apellido</th>
-                    <th>Nombre</th>
-                    <th>Nacimiento</th>
-                    <th>Dni</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {students.map(function(item, key) {
-                    return (
-                      <tr key={key}>
-                        <td>{item.escuela}</td>
-                        <td>{item.provincia}</td>
-                        <td>{item.localidad}</td>
-                        <td>{item.obra}</td>
-                        <td>{item.encuentro}</td>
-                        <td>{item.categoria}</td>
-                        <td>{item.estilo}</td>
-                        <td>{item.coreografo}</td>
-                        <td>{item.apellido_alumno}</td>
-                        <td>{item.nombre_alumno}</td>
-                        <td>{item.nacimiento_alumno}</td>
-                        <td>{item.dni_alumno}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
-        </Container>
+        {students.length <= 0 && (
+          <h1>Procesando... espera NNeatrero impaciente....</h1>
+        )}
+        {students.length > 0 && (
+          <Container>
+            <h3>Listado de Inscriptos</h3>
+            <Row className="justify-content-md-center">
+              <Col>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Escuela</th>
+                      <th>Provincia</th>
+                      <th>Localidad</th>
+                      <th>Obra</th>
+                      <th>Encuentro</th>
+                      <th>Categoria</th>
+                      <th>Estilo</th>
+                      <th>Coreografo</th>
+                      <th>Apellido</th>
+                      <th>Nombre</th>
+                      <th>Nacimiento</th>
+                      <th>Dni</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {students.map(function(item, key) {
+                      return (
+                        <tr key={key}>
+                          <td>{item.escuela}</td>
+                          <td>{item.provincia}</td>
+                          <td>{item.localidad}</td>
+                          <td>{item.obra}</td>
+                          <td>{item.encuentro}</td>
+                          <td>{item.categoria}</td>
+                          <td>{item.estilo}</td>
+                          <td>{item.coreografo}</td>
+                          <td>{item.apellido_alumno}</td>
+                          <td>{item.nombre_alumno}</td>
+                          <td>{item.nacimiento_alumno}</td>
+                          <td>{item.dni_alumno}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </Container>
+        )}
       </React.Fragment>
     );
   }
