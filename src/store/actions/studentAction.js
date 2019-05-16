@@ -1,3 +1,20 @@
+export const getStudentsStored = () => {
+  /* Remove arrow function */
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const db = getFirestore();
+    let students = [];
+    db.settings({ timestampsInSnapshots: true });
+    db.collection("laweek")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          students.push(doc.data());
+        });
+        dispatch({ type: "LIST_STUDENTS_STORED", students });
+      });
+  };
+};
+
 export const findEscuelaFirebase = (escuela, students, getFirestore) => {
   const firestore = getFirestore();
 

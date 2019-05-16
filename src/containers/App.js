@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import AddStudent from "./AddStudent";
 import AddEscuela from "./AddShool";
+import ListInscriptions from "./ListInscriptions";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -18,16 +19,17 @@ class App extends Component {
           </Col>
           <Col>
             <img src="assets/la_week.png" />
-            <h7 className="justify-content-md-center row">
-              Dance Competition Contest
-            </h7>
           </Col>
         </Row>
         <Row>
-          <h3>Inscripcion al certamen</h3>
           <Router>
             <Switch>
               <Route exact path="/add_student" component={AddStudent} />
+              <Route
+                exact
+                path="/tiojosesoslomas"
+                component={ListInscriptions}
+              />
               <Route path="/" component={AddEscuela} />
             </Switch>
           </Router>

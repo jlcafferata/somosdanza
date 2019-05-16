@@ -1,3 +1,5 @@
+import { actionTypes } from "react-redux-firebase";
+
 const initState = {
   students: [],
   coreografo: "",
@@ -46,6 +48,11 @@ const studentReducer = (state = initState, action) => {
           ...state.students.slice(action.id + 1)
         ]
       });
+    case "LIST_STUDENTS_STORED":
+      return {
+        ...state,
+        students: action.students
+      };
     case "RESET":
       return Object.assign({}, ...state, { initState });
     default:

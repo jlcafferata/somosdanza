@@ -147,6 +147,7 @@ class AddEscuela extends Component {
     return (
       <React.Fragment>
         <Container>
+          <h3>Inscripcion al certamen</h3>
           <Row className="justify-content-md-center">
             <Col>
               <Form
