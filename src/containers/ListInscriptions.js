@@ -17,7 +17,7 @@ class ListInscriptions extends Component {
   render() {
     // Access your items from local component state
     const { students } = this.props;
-
+    let total = 0;
     return (
       <React.Fragment>
         {students.length <= 0 && (
@@ -28,7 +28,7 @@ class ListInscriptions extends Component {
             <h3>Listado de Inscriptos</h3>
             <Row className="justify-content-md-center">
               <Col>
-                <Table striped bordered hover>
+                <Table striped bordered hover size="sm">
                   <thead>
                     <tr>
                       <th>Escuela</th>
@@ -43,10 +43,12 @@ class ListInscriptions extends Component {
                       <th>Nombre</th>
                       <th>Nacimiento</th>
                       <th>Dni</th>
+                      <th>Arancel</th>
                     </tr>
                   </thead>
                   <tbody>
                     {students.map(function(item, key) {
+                      total += parseFloat(item.arancel);
                       return (
                         <tr key={key}>
                           <td>{item.escuela}</td>
@@ -61,11 +63,17 @@ class ListInscriptions extends Component {
                           <td>{item.nombre_alumno}</td>
                           <td>{item.nacimiento_alumno}</td>
                           <td>{item.dni_alumno}</td>
+                          <td>${item.arancel}</td>
                         </tr>
                       );
                     })}
                   </tbody>
                 </Table>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h3>Total: $ {total}</h3>
               </Col>
             </Row>
           </Container>

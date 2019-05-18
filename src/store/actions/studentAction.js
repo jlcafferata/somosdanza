@@ -21,9 +21,7 @@ export const findEscuelaFirebase = (escuela, students, getFirestore) => {
   var jobskill_query = firestore
     .collection("laweek")
     .where("escuela", "==", escuela.escuela)
-    .where("encuentro", "==", escuela.encuentro)
-    .where("estilo", "==", escuela.estilo)
-    .where("categoria", "==", escuela.categoria);
+    .where("obra", "==", escuela.obra);
 
   jobskill_query.get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
