@@ -350,9 +350,6 @@ class ComboEstilo extends Component {
 
   constructor(props) {
     super(props);
-    this.setState({
-      encuentro: props.encuentro
-    });
     this.handlerChange = this.handlerChange.bind(this);
   }
 

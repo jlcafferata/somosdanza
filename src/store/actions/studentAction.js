@@ -1,16 +1,38 @@
-export const getStudentsStored = () => {
+export const getStudentsStored = obra => {
   /* Remove arrow function */
+  console.log("getStudentStores - obra: " + obra);
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const db = getFirestore();
     let students = [];
-    db.settings({ timestampsInSnapshots: true });
+    //db.settings({ timestampsInSnapshots: true });
     db.collection("laweek")
+      .where("obra", "==", obra)
+      //.orderBy("apellido_alumno", "desc")
       .get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           students.push(doc.data());
         });
+        console.log(students);
         dispatch({ type: "LIST_STUDENTS_STORED", students });
+      });
+  };
+};
+
+export const getObrasStored = () => {
+  /* Remove arrow function */
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const db = getFirestore();
+    let obras = [];
+    // db.settings({ timestampsInSnapshots: true });
+    db.collection("laweek")
+      .orderBy("obra", "desc")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          obras.push(doc.data());
+        });
+        dispatch({ type: "LIST_OBRAS_STORED", obras });
       });
   };
 };

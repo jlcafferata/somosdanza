@@ -53,6 +53,11 @@ const studentReducer = (state = initState, action) => {
         ...state,
         students: action.students
       };
+    case "LIST_OBRAS_STORED":
+      return {
+        ...state,
+        obras: action.obras
+      };
     case "RESET":
       return Object.assign({}, ...state, { initState });
     default:

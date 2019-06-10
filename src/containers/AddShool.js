@@ -42,6 +42,7 @@ class AddEscuela extends Component {
     this.state = this.initialState;
 
     this.handlerChange = this.handlerChange.bind(this);
+    this.handlerChangeNumber = this.handlerChangeNumber.bind(this);
     this.handlerSubmit = this.handlerSubmit.bind(this);
     this.handlerReset = this.handlerReset.bind(this);
     this.showAddStudent = this.showAddStudent.bind(this);
@@ -70,6 +71,16 @@ class AddEscuela extends Component {
       [e.target.id]: e.target.value
     });
   }
+
+  handlerChangeNumber(e) {
+    let key = e.charCode;
+    console.log(key);
+    if ((key != 44 && key != 46 && key < 48) || key > 57) {
+      //44 y 46 son coma y punto
+      e.preventDefault();
+    }
+  }
+
   handlerSubmit(e) {
     e.preventDefault();
     this.props.addEscuela(this.state);
@@ -224,7 +235,7 @@ class AddEscuela extends Component {
                   <Form.Group
                     as={Col}
                     md="3"
-                    onChange={this.handlerChange}
+                    onKeyPress={this.handlerChangeNumber}
                     controlId="arancel"
                   >
                     <Form.Label>Arancel grupal $:</Form.Label>
@@ -244,7 +255,7 @@ class AddEscuela extends Component {
                   <Form.Group
                     as={Col}
                     md="3"
-                    onChange={this.handlerChange}
+                    onKeyPress={this.handlerChangeNumber}
                     controlId="dni"
                   >
                     <Form.Label>DNI</Form.Label>
@@ -262,7 +273,7 @@ class AddEscuela extends Component {
                   <Form.Group
                     as={Col}
                     md="3"
-                    onChange={this.handlerChange}
+                    onKeyPress={this.handlerChangeNumber}
                     controlId="telefono"
                   >
                     <Form.Label>Tel&eacute;fono</Form.Label>
